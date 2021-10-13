@@ -12,6 +12,6 @@ export default {
 </script>
 
 <style>
-@import '../src/css/chatroom.css';
+/* @import '../src/css/chatroom.css'; */
 </style>
 
