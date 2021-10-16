@@ -14,8 +14,8 @@ const login = async (email, password) => {
       const user = userCredential.user;
       console.log(user.displayName + ' loged in')
     })
-    .catch((err) => {
-      error.value = err.message
+    .catch((_error) => {
+      error.value = _error.message
       console.log('User Login fail => ' + error.value)
     })
 }
