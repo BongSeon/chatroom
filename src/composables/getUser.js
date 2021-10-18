@@ -6,15 +6,7 @@ const user = ref(null)
 const listenAuthStateChange = () => {
   const auth = getAuth()
   onAuthStateChanged(auth, (_user) => {
-    console.log('auth state changed: ', user)
-    if (_user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = _user.uid
-      // ...
-    } else {
-      // User is signed out
-    }
+    console.log('user state changed: ', _user)
     user.value = _user
   })
 }

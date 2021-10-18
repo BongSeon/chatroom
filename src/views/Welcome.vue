@@ -28,7 +28,7 @@ export default {
 
     const enterChat = () => {
       console.log('enterChat')
-      router.push({ name: 'Chatroom' })
+      router.push({ name: 'Home' })
     }
 
     return { showLogin, enterChat }

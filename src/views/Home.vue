@@ -1,6 +1,5 @@
 <template>
-  <div class="chatroom">
-    <h1>Chatroom</h1>
+  <div class="container clearfix">
     <Navbar />
   </div>
 </template>
@@ -29,3 +28,7 @@ export default {
   }
 }
 </script>
+
+<style>
+@import url('../css/home.css');
+</style>
