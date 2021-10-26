@@ -2,8 +2,13 @@
   <form @submit.prevent="handleSubmit">
     <input type="emmail" required placeholder="Email" v-model="email">
     <input type="password" required placeholder="Password" v-model="password">
-    <button>Log In</button>
     <div class="error">{{ error }}</div>
+    <button>Log In</button>
+    <div v-if="isLoading">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
   </form>
 </template>
 
@@ -17,16 +22,21 @@ export default {
     // refs
     const email = ref('')
     const password = ref('')
+    // loading
+    const isLoading = ref(false)
     
     const handleSubmit = async () => {
+      isLoading.value = true
       //console.log(email.value, password.value);
-      await login(email.value, password.value)
+      const user = await login(email.value, password.value)
+        isLoading.value = false
       if(!error.value) {
+        console.log('before emit login: ', user)
         context.emit('login')
       }
     }
 
-    return { email, password, handleSubmit, error }
+    return { email, password, handleSubmit, error, isLoading}
   }
 }
 </script>

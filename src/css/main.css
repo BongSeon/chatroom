@@ -1,23 +1,21 @@
-/* body {
-  background: #e3e1ff;
-  color: #444;
-}
 
-.container {
-  width: 90%;
-  max-width: 960px;
-  margin: 80px auto;
-  border-radius: 20px;
-  box-shadow: 2px 4px 6px rgba(28, 6, 49, 0.1);
-  background: white;
-} */
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
 p {
   margin: 0;
   padding: 0;
 }
-
+.row>* {
+  padding: 0;
+}
 body {
-  background: #C5DDEB;
+  background: #C5DDEB; 
+  /* background: #444753; */
   font: 14px/20px "Lato", Arial, sans-serif;
   color: white;
   margin: 0;
@@ -27,12 +25,3 @@ body {
   color: #ff3f80;
   font-size: 14px;
 }
-/* button {
-  text-decoration: none;
-  background: #5ae4ca;
-  color: white;
-  font-weight: bold;
-  border: 0;
-  border-radius: 20px;
-  padding: 10px 20px;
-} */

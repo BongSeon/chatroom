@@ -12,6 +12,9 @@ const listenAuthStateChange = () => {
 }
 
 const getUser = () => {
+  const auth = getAuth()
+  user.value = auth.currentUser
+
   return { user, listenAuthStateChange }
 }
 

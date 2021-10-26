@@ -8,7 +8,7 @@ const signup = async (email, password, displayName) => {
 
   const auth = getAuth()
 
-  createUserWithEmailAndPassword(auth, email, password)
+  await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       updateProfile(auth.currentUser, {
@@ -16,10 +16,12 @@ const signup = async (email, password, displayName) => {
       }).then(() => {
         // Profile updated!
         console.log('Profile updated!', auth.currentUser)
+        const user = userCredential.user
+        return user
       })
     })
-    .catch((err) => {
-      error.value = err.message
+    .catch((_error) => {
+      error.value = _error.message
       console.log('User Create fail => ' + error.value)
     })
 }

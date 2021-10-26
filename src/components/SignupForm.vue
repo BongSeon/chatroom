@@ -5,6 +5,11 @@
     <input type="password" required placeholder="Password" v-model="password">
     <div class="error">{{ error }}</div>
     <button>Sign Up</button>
+    <div v-if="isLoading">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
   </form>
 </template>
 
@@ -19,15 +24,20 @@ export default {
     const displayName = ref('')
     const email = ref('')
     const password = ref('')
+    // loading
+    const isLoading = ref(false)
     
     const handleSubmit = async () => {
-      await signup(email.value, password.value, displayName.value)
+      isLoading.value = true
+      const user = await signup(email.value, password.value, displayName.value)
+        isLoading.value = false
       if(!error.value) {
+        console.log('before emit signup: ', user)
         context.emit('signup')
       }
     }
 
-    return { displayName, email, password, handleSubmit, error }
+    return { displayName, email, password, handleSubmit, error, isLoading }
   }
 }
 </script>

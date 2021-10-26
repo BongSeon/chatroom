@@ -8,11 +8,12 @@ const login = async (email, password) => {
 
   const auth = getAuth()
 
-  signInWithEmailAndPassword(auth, email, password)
+  await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
-      const user = userCredential.user;
-      console.log(user.displayName + ' loged in')
+      const user = userCredential.user
+      //console.log(user.displayName + ' loged in')
+      return user
     })
     .catch((_error) => {
       error.value = _error.message
