@@ -12,20 +12,17 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
-import { db } from '../firebase/config'
-import { collection, addDoc, Timestamp } from 'firebase/firestore'
-// import useCollection from '../composables/useCollection'
-// import { Timestamp } from 'firebase/firestore'
-
+import { ref } from 'vue'
+import { Timestamp } from 'firebase/firestore'
+import useCollection from '../composables/useCollection'
 import getUser from '../composables/getUser'
+
 export default {
   setup() {
-    const { user } = getUser()
-    // const { error, addDoc } = useCollection('messages')
-    
-    const error = ref(null)
     const message = ref('')
+
+    const { user } = getUser()
+    const { error, addDocument } = useCollection('messages')
 
     // enter 또는 send 버튼을 눌렀을 때
     const handleSubmit = async () => {
@@ -34,19 +31,11 @@ export default {
         message: message.value,
         createdAt: Timestamp.now()
       }
-      // console.log(chat);
-      try {
-        const docRef = await addDoc(collection(db, "messages"), chat);
 
-        console.log("Document written with ID: ", docRef.id);
-      } catch (e) {
-        console.error("Error adding document: ", e);
+      await addDocument(chat)
+      if (!error.value) {
+        message.value = ''
       }
-
-      // await addDoc(chat)
-      // if (!error.value) {
-      //   message.value = ''
-      // }
     }
 
     return { message, handleSubmit, error }

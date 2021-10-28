@@ -1,17 +1,19 @@
 import { initializeApp } from 'firebase/app'
 import { getFirestore } from 'firebase/firestore'
 
-// Your web app's Firebase configuration
+// Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA2EqmYFLUc8kP5nJBmIGg_VjJbbzCNnTk",
-  authDomain: "aestagram-pwa.firebaseapp.com",
-  projectId: "aestagram-pwa",
-  storageBucket: "aestagram-pwa.appspot.com",
-  messagingSenderId: "69028833914",
-  appId: "1:69028833914:web:376bf4100c449f00cc29c3"
+  apiKey: process.env.VUE_APP_FIREBASE_APIKEY,
+  authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.VUE_APP_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.VUE_APP_FIREBASE_APPID,
 }
 
-// Initialize Firebase
+console.log(process.env)
+
+// Firebase 인스턴스 초기화
 const app = initializeApp(firebaseConfig)
 // Cloud Firestore 인스턴스를 초기화
 var db = getFirestore()
