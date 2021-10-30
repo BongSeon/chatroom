@@ -24,20 +24,18 @@ import Social from '../components/Social.vue'
 import Chat from '../components/Chat.vue'
 import { watch } from '@vue/runtime-core'
 import { useRouter } from 'vue-router'
-import { getAuth } from "firebase/auth";
+import getUser from '../composables/getUser'
 
 export default {
   components: { Sidebar, Social, Chat },
 
   setup() {
     const router = useRouter()
-    const auth = getAuth();
     //ref
-    const user = ref(null)
+    const { user } = getUser()
     const isSocial = ref(false)
     const drawer = ref(false)
 
-    user.value = auth.currentUser;
     //listenAuthStateChange()
     if(!user.value){
       console.log('home에서로그아웃시킵니다',user.value);

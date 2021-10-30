@@ -6,18 +6,18 @@
     <div class="chat-header">
       chat-header
     </div>
-    <div class="chat-history">
-      chat-history
-    </div>
+    <ChatHistory />
     <NewChatForm />
   </div>
 </template>
 
 <script>
-import NewChatForm from '../components/NewChatForm.vue'
 import Navbar from '../components/Navbar.vue'
+import ChatHistory from '../components/ChatHistory.vue'
+import NewChatForm from '../components/NewChatForm.vue'
+
 export default {
-  components: { NewChatForm, Navbar },
+  components: { Navbar, ChatHistory, NewChatForm },
   setup(props, context) {
 
     const handleClickAvatar = () => {
@@ -44,9 +44,5 @@ export default {
   /* padding: 5px; */
   /* border-bottom: 2px solid white; */
 }
-.chat .chat-history {
-  background: #f1f1f1;
-  height: 575px;
-  overflow-y: scroll;
-}
+
 </style>

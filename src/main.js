@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
-import { app, db } from './firebase/config'
+// import { app, db } from './firebase/config'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 import './css/main.css'

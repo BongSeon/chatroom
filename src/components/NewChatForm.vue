@@ -13,6 +13,7 @@
 
 <script>
 import { ref } from 'vue'
+
 import { Timestamp } from 'firebase/firestore'
 import useCollection from '../composables/useCollection'
 import getUser from '../composables/getUser'
@@ -45,22 +46,27 @@ export default {
 
 <style scoped>
 .chat-message {
+  background: #15171E;
+  border-top: 1px solid #999;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-evenly;
   align-content: center;
   width: 100%;
+  max-height: 70px;
   /* padding: 30px; */
   bottom: 0px;
 }
 textarea {
   width: 70%;
+  margin: 10px;
   font: 14px/22px "Lato", Arial, sans-serif;
   /* border-radius: 5px; */
   /* resize: none; */
 }
 button {
+  margin: 10px;
   width: 15%;
 }
 </style>
