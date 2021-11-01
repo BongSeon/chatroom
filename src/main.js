@@ -4,7 +4,8 @@ import router from './router'
 // import { app, db } from './firebase/config'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
-import './css/main.css'
+import './css/app.css'
+import './css/app.sass'
 
 let _app
 

@@ -9,8 +9,9 @@
           <Sidebar :isDrawer="false" />
         </div>
         <div class="col-sm-8 mainarea">
+          <Navbar class="nav-bar" @clickAvartar="handleAvatarClick" />
           <Social v-if="isSocial" />
-          <Chat v-else @clickAvatar="handleAvatarClick" />
+          <Chat v-else />
         </div>
       </div><!-- row home -->
     </div><!-- container-md -->
@@ -20,6 +21,7 @@
 <script>
 import { ref } from '@vue/reactivity'
 import Sidebar from '../components/Sidebar.vue'
+import Navbar from '../components/Navbar.vue'
 import Social from '../components/Social.vue'
 import Chat from '../components/Chat.vue'
 import { watch } from '@vue/runtime-core'
@@ -27,7 +29,7 @@ import { useRouter } from 'vue-router'
 import getUser from '../composables/getUser'
 
 export default {
-  components: { Sidebar, Social, Chat },
+  components: { Sidebar, Navbar, Social, Chat },
 
   setup() {
     const router = useRouter()
@@ -71,12 +73,29 @@ export default {
     max-width: 768px;
   }
 }
+
+.home, .drawer {
+  height: 95vh;
+}
+
+@media (max-width: 768px) {
+  .home, .drawer {
+    height: 100vh;
+  }
+}
+
 .sidearea {
   display: block;
-  height: 100%;
 }
 .mainarea {
-  height: 100%;
+    height: 100%;
+}
+.nav-bar {
+  background: #2f3034;
+  height: 5%;
+}
+.chat {
+    height: 95%;
 }
 
 .drawer {

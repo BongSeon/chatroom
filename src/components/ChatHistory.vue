@@ -1,6 +1,6 @@
 <template>
-  <div class="chat-history">
-    <div v-if="formattedDocuments" class="messages">
+  <div class="history">
+    <div v-if="formattedDocuments">
       <div
         v-for="message in formattedDocuments"
         :key="message.id"
@@ -55,16 +55,16 @@ export default {
       unsubscribe()
     })
 
-    return { user, formattedDocuments}
+    return { user, formattedDocuments, error }
   }
 
 }
 </script>
 
 <style scoped>
-.chat-history {
+.history {
   background: #15171E;
-  height: 575px;
+  /* height: 575px; */
   overflow-y: scroll;
   padding: 0 10px;
 }

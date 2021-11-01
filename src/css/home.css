@@ -2,12 +2,14 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
-.home {
-  height: 95vh;
-}
-.drawer {
-  height: 95vh;
-}
+
+
+/* @media (min-width: 768px) {
+  .drawer {
+    display: none;
+  }
+} */
+
 .container {
   background: #444753;
 }

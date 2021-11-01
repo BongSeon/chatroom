@@ -63,6 +63,7 @@ export default {
   height: 100%;
   background: #090909;
   padding: 0;
+  /* border-radius: 10px 0 0 10px; */
 }
 .sidebar .row {
   --bs-gutter-x: 0rem;

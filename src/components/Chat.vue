@@ -1,29 +1,24 @@
 <template>
   <div class="chat">
-    <div class="navbar">
-      <Navbar @clickAvartar="handleClickAvatar" />
-    </div>
-    <div class="chat-header">
-      chat-header
-    </div>
-    <ChatHistory />
-    <NewChatForm />
+    <ChatHeader class="chat-header"/>
+    <ChatHistory class="chat-history"/>
+    <NewChatForm class="new-chat-form"/>
   </div>
 </template>
 
 <script>
-import Navbar from '../components/Navbar.vue'
+import ChatHeader from '../components/ChatHeader.vue'
 import ChatHistory from '../components/ChatHistory.vue'
 import NewChatForm from '../components/NewChatForm.vue'
 
 export default {
-  components: { Navbar, ChatHistory, NewChatForm },
-  setup(props, context) {
+  components: { ChatHeader, ChatHistory, NewChatForm },
+  setup() { // setup(props, context) {
 
-    const handleClickAvatar = () => {
-      context.emit('clickAvatar')
-    }
-    return { handleClickAvatar }
+    // const handleClickAvatar = () => {
+    //   context.emit('clickAvatar')
+    // }
+    // return { handleClickAvatar }
   }
 }
 </script>
@@ -33,16 +28,25 @@ export default {
 .chat {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   background: #F2F5F8;
   color: #434651;
-  height: 100%;
+  /* border-radius: 0 10px 10px 0; */
 }
 
 .chat .chat-header {
-  background: #8993b9;
-  /* padding: 5px; */
-  /* border-bottom: 2px solid white; */
+  background: #a1a4ad;
+  flex-basis: 50px; /* 고정값 */
+  flex-shrink: 0; /* 아이템의 크기가 flex-basis 보다 작아지지 않게 하기 위해 */
+}
+.chat .chat-history {
+  flex-basis: 90%;
+  flex-grow: 1;
+}
+.chat .new-chat-form {
+  /* border-radius: 0 0 10px 0; */
+  flex-basis: 70px; /* 고정값 */
+  flex-shrink: 0; /* 아이템의 크기가 flex-basis 보다 작아지지 않게 하기 위해 */
 }
 
 </style>

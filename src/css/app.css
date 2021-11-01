@@ -1,4 +1,9 @@
-
+#app {
+  font-family: 'Roboto', Averta, Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font: 14px/20px "Lato", Arial, sans-serif;
+}
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */

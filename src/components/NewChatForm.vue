@@ -1,5 +1,5 @@
 <template>
-  <form class="chat-message">
+  <form class="chat-form">
     <textarea
       placeholder="Type your message"
       v-model="message"
@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style scoped>
-.chat-message {
+.chat-form {
   background: #15171E;
   border-top: 1px solid #999;
   display: flex;
