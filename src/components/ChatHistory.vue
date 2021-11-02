@@ -1,24 +1,22 @@
 <template>
-  <div class="history">
-    <div v-if="formattedDocuments">
-      <div
-        v-for="message in formattedDocuments"
-        :key="message.id"
-        class="single"
-        :class="{ mySingle: message.name == user.displayName }"
-      >
-        <span class="avatar">아바타</span>
-        <span>
-          <div>
-            <span class="name">{{ message.name }}</span>
-            <span class="created-at">{{ message.createdAt }} ago</span>
-          </div>
-          <div class="ment">{{ message.message }}</div>
-        </span>
-      </div>
-    </div>
+    <div v-if="formattedDocuments" class="history" ref="messages">
+        <div
+          v-for="message in formattedDocuments"
+          :key="message.id"
+          class="single"
+          :class="{ mySingle: message.name == user.displayName }"
+        >
+          <span class="avatar">아바타</span>
+          <span>
+            <div>
+              <span class="name">{{ message.name }}</span>
+              <span class="created-at">{{ message.createdAt }} ago</span>
+            </div>
+            <div class="ment">{{ message.message }}</div>
+          </span>
+        </div>
     <div class="error">{{ error }}</div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -32,14 +30,13 @@
     // ])
 import getUser from '../composables/getUser'
 import getCollection from '../composables/getCollection'
-import { computed, onUnmounted } from 'vue'
+import { ref, computed, onUnmounted, onUpdated, watchEffect } from 'vue'
 import { formatDistanceToNow } from 'date-fns'
 
 
 export default {
   setup() {
     const { user } = getUser()
-    console.log(user.value.displayName)
     const { documents, error, unsubscribe } = getCollection('messages')
     
     const formattedDocuments = computed(() => {
@@ -50,12 +47,24 @@ export default {
         })
       }
     })
+    
+    //
+    const messages = ref(null)
 
-    onUnmounted(() => {
-      unsubscribe()
+    onUpdated(() => {
+      messages.value.scrollTop = messages.value.scrollHeight
     })
 
-    return { user, formattedDocuments, error }
+    // onUnmounted(() => {
+    //   unsubscribe()
+    // })
+
+    watchEffect((onInvalidate) => {
+      
+      onInvalidate(() => unsubscribe())
+    })
+
+    return { user, formattedDocuments, error, messages }
   }
 
 }
@@ -66,7 +75,7 @@ export default {
   background: #15171E;
   /* height: 575px; */
   overflow-y: scroll;
-  padding: 0 10px;
+  padding: 10px 10px;
 }
 .single {
   display: flex;

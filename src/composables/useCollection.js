@@ -10,7 +10,7 @@ const useCollection = (collectionName) => {
     try {
       const docRef = await addDoc(collection(db, collectionName), doc);
 
-      console.log("Document written with ID: ", docRef.id)
+      // console.log("Document written with ID: ", docRef.id)
       error.value = null
     } catch (err) {
       console.error("Error adding document: ", err);

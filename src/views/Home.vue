@@ -94,8 +94,18 @@ export default {
   background: #2f3034;
   height: 5%;
 }
+
 .chat {
-    height: 95%;
+  height: 95%;
+}
+
+@media (max-width: 576px) {
+  .nav-bar {
+    height: 7%;
+  }
+  .chat {
+    height: 93%;
+  }
 }
 
 .drawer {

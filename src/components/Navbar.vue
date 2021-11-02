@@ -1,7 +1,7 @@
 <template>
   <nav class="nav-bar">
-    <img @click="handleClick" class="my-avatar small-screen-only" src="../assets/avatar-120x120.png" alt="">
-    <img class="my-avatar disabled large-screen-only" src="../assets/avatar-120x120.png" alt="">
+    <img @click="handleClick" class="my-avatar large-avatar small-screen-only" src="../assets/avatar-120x120.png" alt="">
+    <img class="my-avatar small-avatar disabled large-screen-only" src="../assets/avatar-120x120.png" alt="">
     <!-- <button @click="handleClick" type="button" class="my-avatar small-screen-only">smOnly</button> -->
     <!-- <button disabled type="button" class="my-avatar large-screen-only">lgOnly</button> -->
   </nav>
@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .nav-bar {
   position: relative;
   display: flex;
@@ -31,8 +31,13 @@ export default {
   padding-bottom: 0.5rem;
 }
 .my-avatar {
-  height: 30px;
   cursor: pointer;
+}
+.small-avatar {
+  height: 30px;
+}
+.large-avatar {
+  height: 50px;
 }
 .disabled {
   cursor: default;

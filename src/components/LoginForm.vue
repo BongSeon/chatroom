@@ -27,11 +27,11 @@ export default {
     
     const handleSubmit = async () => {
       isLoading.value = true
-      //console.log(email.value, password.value);
+      
       const user = await login(email.value, password.value)
-        isLoading.value = false
+      isLoading.value = false
+
       if(!error.value) {
-        console.log('before emit login: ', user)
         context.emit('login')
       }
     }

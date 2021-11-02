@@ -10,11 +10,12 @@ const getCollection = (collectionName) => {
   const q = query(collectionRef, orderBy("createdAt"), limit(300))
   
   const unsubscribe = onSnapshot(q, (querySnapshot) => {
+    console.log('snapshot')
     const results = []
     querySnapshot.forEach((doc) => {
       doc.data().createdAt && results.push({ ...doc.data(), id: doc.id })
     })
-    console.log(results);
+    // console.log(results)
     documents.value = results
     error.value = null
   }, (err) => {

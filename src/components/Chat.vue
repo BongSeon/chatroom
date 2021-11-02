@@ -13,12 +13,8 @@ import NewChatForm from '../components/NewChatForm.vue'
 
 export default {
   components: { ChatHeader, ChatHistory, NewChatForm },
-  setup() { // setup(props, context) {
+  setup() {
 
-    // const handleClickAvatar = () => {
-    //   context.emit('clickAvatar')
-    // }
-    // return { handleClickAvatar }
   }
 }
 </script>
