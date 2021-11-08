@@ -3,7 +3,12 @@
     <input type="emmail" required placeholder="Email" v-model="email">
     <input type="password" required placeholder="Password" v-model="password">
     <div class="error">{{ error }}</div>
-    <button>Log In</button>
+    <button 
+      type="button"
+      class="btn btn-outline-light"
+    >
+    Log In
+    </button>
     <div v-if="isLoading">
       <div class="spinner-border" role="status">
         <span class="visually-hidden">Loading...</span>
